@@ -1,6 +1,5 @@
 package com.lulow.justtype.view;
 
-import com.lulow.justtype.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
