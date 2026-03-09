@@ -3,5 +3,6 @@ module com.lulow.justtype {
     requires javafx.fxml;
 
     opens com.lulow.justtype to javafx.fxml;
+    opens com.lulow.justtype.controller to javafx.fxml;
     exports com.lulow.justtype;
 }
