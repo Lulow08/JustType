@@ -1,9 +1,7 @@
 package com.lulow.justtype;
 
-import com.lulow.justtype.view.GameStage;
+import com.lulow.justtype.view.SceneManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,7 +13,10 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage gameStage) throws IOException {
-        new GameStage(gameStage);
+    public void start(Stage mainStage) throws IOException {
+        SceneManager sceneManager = SceneManager.getInstance();
+        sceneManager.setMainStage(mainStage);
+        sceneManager.loadFonts();
+        sceneManager.loadScene("/fxml/game-view.fxml");
     }
 }
