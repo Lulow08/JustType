@@ -78,13 +78,14 @@
               fx:id="inputField"
               prefHeight="48"
               maxWidth="Infinity"
-              style="-fx-background-color: #0C0910; -fx-border-color: #888888; -fx-border-width: 1; -fx-border-radius: 0; -fx-background-radius: 0; -fx-text-fill: #FBFBFB; -fx-font-family: 'GeistMono NF'; -fx-font-size: 22px; -fx-padding: 0 46 0 12; -fx-highlight-fill: #07DACC; -fx-highlight-text-fill: #0C0910; -fx-display-caret: true;"/>
+              style="-fx-background-color: #0C0910; -fx-border-color: #888888; -fx-border-width: 1; -fx-border-radius: 0; -fx-background-radius: 0; -fx-text-fill: #FBFBFB; -fx-font-family: 'GeistMono NF'; -fx-font-size: 22px; -fx-padding: 0 46 0 12; -fx-highlight-fill: #07DACC; -fx-highlight-text-fill: #0C0910; -fx-display-caret: true;"
+              onAction="#onHandleEnter"/>
 
       <Button
               prefHeight="30" prefWidth="34"
               style="-fx-background-color: #FBFBFB; -fx-background-radius: 8; -fx-border-radius: 8; -fx-cursor: hand; -fx-padding: 0;"
               StackPane.alignment="CENTER_RIGHT"
-              onAction="#onHandleValidate">
+              onAction="#onHandleSubmitButton">
          <StackPane.margin>
             <Insets right="8"/>
          </StackPane.margin>
