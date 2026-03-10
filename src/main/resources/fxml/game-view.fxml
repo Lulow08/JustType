@@ -41,6 +41,7 @@
             </Label>
 
             <Label
+                    fx:id="timerLabel"
                     text="20"
                     alignment="CENTER"
                     style="-fx-text-fill: #FBFBFB; -fx-font-family: 'GeistMono NF'; -fx-font-size: 20px;"
@@ -51,7 +52,8 @@
       </HBox>
 
       <Label
-              text="#1"
+              fx:id="levelLabel"
+              text=""
               style="-fx-text-fill: #07DACC; -fx-font-family: 'Determination'; -fx-font-size: 24px;"
               AnchorPane.topAnchor="0"
               AnchorPane.rightAnchor="36"
@@ -59,11 +61,9 @@
 
    </AnchorPane>
 
-   <Label
-           text="datos"
-           style="-fx-text-fill: #888888; -fx-font-family: 'Determination'; -fx-font-size: 80px;"
+   <HBox
+           fx:id="wordDisplay"
            alignment="CENTER"
-           maxWidth="Infinity"
            AnchorPane.topAnchor="78"
            AnchorPane.leftAnchor="0"
            AnchorPane.rightAnchor="0"/>
