@@ -1,6 +1,7 @@
 package com.lulow.justtype.controller;
 
 import com.lulow.justtype.model.GameLogic;
+import com.lulow.justtype.model.timer.GameTimer;
 import com.lulow.justtype.view.GameView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -16,12 +17,16 @@ public class GameController {
 
     private final GameLogic gameLogic = new GameLogic();
     private GameView gameView;
+    private GameTimer gameTimer;
 
     @FXML
     public void initialize() {
         gameView = new GameView(wordDisplay, levelLabel, timerLabel);
+        gameTimer = new GameTimer(this::onTick, this::onTimeUp);
+
         gameLogic.nextWord();
         refreshUI();
+        startTimer();
 
         inputField.textProperty().addListener((obs, oldText, newText) ->
                 gameView.colorizeChars(newText, gameLogic.getCurrentWord())
@@ -40,13 +45,31 @@ public class GameController {
         if (correct) { gameLogic.levelUp(); }
         else { gameLogic.reset(); }
 
+        nextRound();
+    }
+
+    private void onTick() {
+        gameView.updateHUD(gameLogic.getCurrentLevel(), gameTimer.getSecondsLeft());
+    }
+
+    private void onTimeUp() {
+        gameLogic.reset();
+        nextRound();
+    }
+
+    private void nextRound() {
         gameLogic.nextWord();
         inputField.clear();
         refreshUI();
+        startTimer();
+    }
+
+    private void startTimer() {
+        gameTimer.start(gameLogic.getMaxTimeForCurrentLevel());
     }
 
     private void refreshUI() {
-        gameView.renderWord(gameLogic.getCurrentChars());
-        gameView.updateHUD(gameLogic.getCurrentLevel(), gameLogic.getTimeForCurrentLevel());
+        gameView.renderWord(gameLogic.getCurrentChars(), gameLogic.getCurrentLevel());
+        gameView.updateHUD(gameLogic.getCurrentLevel(), gameLogic.getMaxTimeForCurrentLevel());
     }
 }
