@@ -8,15 +8,18 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    public static void main(String[] args) { launch(args); }
 
     @Override
     public void start(Stage mainStage) throws IOException {
+
+        mainStage.setTitle("JustType");
+        mainStage.setResizable(false);
+
         SceneManager sceneManager = SceneManager.getInstance();
         sceneManager.setMainStage(mainStage);
+
         sceneManager.loadFonts();
-        sceneManager.loadScene("/fxml/game-view.fxml");
+        sceneManager.loadScene("game-view.fxml");
     }
 }
