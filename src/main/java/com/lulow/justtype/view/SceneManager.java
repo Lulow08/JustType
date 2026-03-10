@@ -39,7 +39,7 @@ public final class SceneManager {
     }
 
     public void loadScene(String fxmlPath) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + fxmlPath));
 
         Parent root = fxmlLoader.load();
 
