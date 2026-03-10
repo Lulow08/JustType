@@ -9,8 +9,8 @@ public class GameTimer extends TimerAdapter {
     private Timeline timeline;
     private int secondsLeft;
 
-    private Runnable onTick;
-    private Runnable onTimeUp;
+    private final Runnable onTick;
+    private final Runnable onTimeUp;
 
     public GameTimer(Runnable onTick, Runnable onTimeUp) {
         this.onTick   = onTick;
