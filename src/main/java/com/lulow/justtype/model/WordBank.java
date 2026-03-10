@@ -9,7 +9,7 @@ public class WordBank {
     private final Random random = new Random();
     private final Set<String> used = new HashSet<>();
 
-    private String[] TIER_1 = {
+    private final String[] TIER_1 = {
             "class", "git", "run", "bool", "IDEA",
             "star", "java", "fast", "game", "cast",
             "Type", "tree", "zip", "model", "word",
