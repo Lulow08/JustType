@@ -36,7 +36,6 @@ public class GameView {
     private final Label levelLabel;
     private final Label timerLabel;
     private final StackPane timerPane;
-    private final AnchorPane rootPane;
 
     private Label[] charLabels = new Label[0];
     private String  activeCharStyle = CHAR_NORMAL_STYLE;
@@ -44,15 +43,14 @@ public class GameView {
     private PressAnimation inputAnimation;
     private PressAnimation buttonAnimation;
 
-    private TimerArc           timerArc;
-    private BackgroundGradient backgroundGradient;
+    private final TimerArc           timerArc;
+    private final BackgroundGradient backgroundGradient;
 
     public GameView(HBox wordDisplay, Label levelLabel, Label timerLabel, StackPane timerPane, AnchorPane rootPane) {
         this.wordDisplay = wordDisplay;
         this.levelLabel  = levelLabel;
         this.timerLabel  = timerLabel;
         this.timerPane   = timerPane;
-        this.rootPane    = rootPane;
         this.timerArc           = new TimerArc();
         this.backgroundGradient = new BackgroundGradient(rootPane);
 
