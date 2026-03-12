@@ -15,7 +15,7 @@ public class BackgroundGradient {
     private static final Color COLOR_T4 = Color.web("#1c0819");
     private static final Color COLOR_T5 = Color.web("#2b080d");
 
-    private static final int ANIMATION_DURATION_MS = 1200;
+    private static final int ANIMATION_DURATION_MS = 1400;
     private static final int ANIMATION_STEPS = 24;
 
     private final Pane target;
