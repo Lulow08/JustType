@@ -2,6 +2,7 @@ package com.lulow.justtype.controller;
 
 import com.lulow.justtype.model.GameLogic;
 import com.lulow.justtype.model.timer.GameTimer;
+import com.lulow.justtype.view.SceneManager;
 import com.lulow.justtype.view.particles.ConfettiFX;
 import com.lulow.justtype.view.GameView;
 import javafx.fxml.FXML;
@@ -12,10 +13,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
+
 public class GameController {
 
     @FXML private TextField inputField;
     @FXML private HBox      wordDisplay;
+    @FXML private HBox      timerPill;
     @FXML private Label     levelLabel;
     @FXML private Label     timerLabel;
     @FXML private Button    submitButton;
@@ -30,7 +34,7 @@ public class GameController {
     @FXML
     public void initialize() {
         gameLogic = new GameLogic();
-        gameView = new GameView(wordDisplay, levelLabel, timerLabel, timerPane, rootPane);
+        gameView = new GameView(wordDisplay, levelLabel, timerLabel, timerPane, rootPane, timerPill);
         gameTimer = new GameTimer(this::onTick, this::onTimeUp);
         confetti = new ConfettiFX(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
 
@@ -40,9 +44,7 @@ public class GameController {
                 gameView.colorizeChars(newText, gameLogic.getCurrentWord())
         );
 
-        gameLogic.nextWord();
-        refreshUI();
-        startTimer();
+        startRound();
     }
 
     @FXML private void onSubmitButtonClicked() { submitAnswer(inputField.getText()); }
@@ -57,9 +59,18 @@ public class GameController {
         if (isCorrect) {
             gameLogic.levelUp();
             confetti.play(0.02);
-        } else { gameLogic.reset(); }
+        } else { goToLoseScreen(input); }
 
         nextRound();
+    }
+
+    private void goToLoseScreen(String wrongAnswer) {
+        SceneManager.getInstance().setLoseData(gameLogic.getCurrentWord(), wrongAnswer);
+        try {
+            SceneManager.getInstance().loadScene("lose-view.fxml");
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     private void onTick() {
@@ -76,6 +87,14 @@ public class GameController {
         inputField.clear();
         refreshUI();
         startTimer();
+    }
+
+    private void startRound() {
+        gameLogic.nextWord();
+        inputField.clear();
+        refreshUI();
+        startTimer();
+        gameView.playEntranceAnimations(inputField, submitButton);
     }
 
     private void startTimer() {
