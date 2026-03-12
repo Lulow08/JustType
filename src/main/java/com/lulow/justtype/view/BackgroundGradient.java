@@ -10,10 +10,10 @@ import javafx.util.Duration;
 public class BackgroundGradient {
 
     private static final Color COLOR_T1 = Theme.COLOR_BASE;
-    private static final Color COLOR_T2 = Color.web("#0e0914");
-    private static final Color COLOR_T3 = Color.web("#120a1c");
-    private static final Color COLOR_T4 = Color.web("#8B80F9");
-    private static final Color COLOR_T5 = Color.web("#F45B69");
+    private static final Color COLOR_T2 = Color.web("#130b1c");
+    private static final Color COLOR_T3 = Color.web("#14081a");
+    private static final Color COLOR_T4 = Color.web("#1c0819");
+    private static final Color COLOR_T5 = Color.web("#2b080d");
 
     private static final int ANIMATION_DURATION_MS = 1200;
     private static final int ANIMATION_STEPS = 24;
