@@ -58,8 +58,8 @@ public class GameView {
     }
 
     public void setupAnimations(TextField inputField, Button submitButton) {
-        inputAnimation = new PressAnimation(inputField, 0.98);
-        PressAnimation buttonAnimation = new PressAnimation(submitButton, 0.92);
+        inputAnimation = new PressAnimation(inputField, 0.96);
+        PressAnimation buttonAnimation = new PressAnimation(submitButton, 0.9);
 
         submitButton.setOnMousePressed(event  -> buttonAnimation.play());
     }
@@ -101,7 +101,8 @@ public class GameView {
         timerLabel.setText(String.valueOf(secondsLeft));
 
         boolean critical = secondsLeft <= CRITICAL_TIME_THRESHOLD;
-        timerLabel.setStyle(critical ? CSS_TIMER_CRITICAL : CSS_TIMER_NORMAL);
+        timerLabel.getStyleClass().removeAll(CSS_TIMER_NORMAL, CSS_TIMER_CRITICAL);
+        timerLabel.getStyleClass().add(critical ? CSS_TIMER_CRITICAL : CSS_TIMER_NORMAL);
 
         if (critical) { new OvershootAnimation(timerLabel, 1.3, 0.94).play(); }
 
