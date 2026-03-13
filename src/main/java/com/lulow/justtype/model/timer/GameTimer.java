@@ -38,9 +38,7 @@ public class GameTimer extends TimerAdapter {
 
     @Override
     public void stop() {
-        if (timeline != null) {
-            timeline.stop();
-        }
+        if (timeline != null) { timeline.stop(); }
     }
 
     @Override public int getSecondsLeft() { return secondsLeft; }
