@@ -31,7 +31,7 @@ public class LoseController {
         answerLabel.setOpacity(0);
         hintLabel.setOpacity(0);
 
-        PauseTransition delay = new PauseTransition(Duration.seconds(1.2));
+        PauseTransition delay = new PauseTransition(Duration.seconds(1.6));
         delay.setOnFinished(event -> {
             titleLabel.setOpacity(1.0);
             new OvershootAnimation(titleLabel, 3.0, 0.88).play();
@@ -53,8 +53,8 @@ public class LoseController {
     private void onContinue() {
         try {
             SceneManager.getInstance().loadScene("game-view.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
