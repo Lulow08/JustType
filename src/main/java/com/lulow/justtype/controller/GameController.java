@@ -44,24 +44,23 @@ public class GameController {
                 gameView.colorizeChars(newText, gameLogic.getCurrentWord())
         );
 
-        startRound();
+        startNewGame();
     }
 
     @FXML private void onSubmitButtonClicked() { submitAnswer(inputField.getText()); }
     @FXML private void onEnterPressed() { submitAnswer(inputField.getText()); }
 
     private void submitAnswer(String input) {
-        gameView.playInputAnimation();
         gameTimer.stop();
+        gameView.playInputAnimation();
 
         boolean isCorrect = gameLogic.processAnswer(input);
 
         if (isCorrect) {
             gameLogic.levelUp();
             confetti.play(0.02);
+            nextRound();
         } else { goToLoseScreen(input); }
-
-        nextRound();
     }
 
     private void goToLoseScreen(String wrongAnswer) {
@@ -77,10 +76,7 @@ public class GameController {
         gameView.updateHUD(gameLogic.getCurrentLevel(), gameTimer.getSecondsLeft());
     }
 
-    private void onTimeUp() {
-        gameLogic.reset();
-        nextRound();
-    }
+    private void onTimeUp() { submitAnswer(inputField.getText()); }
 
     private void nextRound() {
         gameLogic.nextWord();
@@ -89,7 +85,7 @@ public class GameController {
         startTimer();
     }
 
-    private void startRound() {
+    private void startNewGame() {
         gameLogic.nextWord();
         inputField.clear();
         refreshUI();
