@@ -2,6 +2,7 @@ package com.lulow.justtype.view;
 
 import com.lulow.justtype.view.animations.OvershootAnimation;
 import com.lulow.justtype.view.animations.PressAnimation;
+import com.lulow.justtype.view.animations.SlideInAnimation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -24,9 +25,11 @@ public class GameView {
 
     private static final double WORD_TOP_MARGIN_NORMAL = 78;
     private static final double WORD_TOP_MARGIN_SMALL = 92;
+    private static final double TIMER_PILL_SLIDE_FROM = -80;
     private static final int CRITICAL_TIME_THRESHOLD = 5;
 
     private final HBox      wordDisplay;
+    private final HBox      timerPill;
     private final Label     levelLabel;
     private final Label     timerLabel;
     private final StackPane timerPane;
@@ -34,12 +37,14 @@ public class GameView {
     private Label[] charLabels      = new Label[0];
 
     private PressAnimation inputAnimation;
+    private PressAnimation buttonAnimation;
 
     private final TimerArc           timerArc;
     private final BackgroundGradient backgroundGradient;
 
-    public GameView(HBox wordDisplay, Label levelLabel, Label timerLabel, StackPane timerPane, AnchorPane rootPane) {
+    public GameView(HBox wordDisplay, Label levelLabel, Label timerLabel, StackPane timerPane, AnchorPane rootPane, HBox timerPill ) {
         this.wordDisplay = wordDisplay;
+        this.timerPill   = timerPill;
         this.levelLabel  = levelLabel;
         this.timerLabel  = timerLabel;
         this.timerPane   = timerPane;
@@ -51,7 +56,7 @@ public class GameView {
     }
 
     private void setupTimerArc() {
-        timerPane.getChildren().add(0, timerArc.getArc());
+        timerPane.getChildren().add(0, timerArc.getContainer());
         Node arcNode = timerPane.getChildren().get(0);
         StackPane.setAlignment(arcNode, Pos.CENTER_LEFT);
         StackPane.setMargin(arcNode, new Insets(0,0,0,8));
@@ -59,12 +64,20 @@ public class GameView {
 
     public void setupAnimations(TextField inputField, Button submitButton) {
         inputAnimation = new PressAnimation(inputField, 0.96);
-        PressAnimation buttonAnimation = new PressAnimation(submitButton, 0.9);
+        buttonAnimation = new PressAnimation(submitButton, 0.9);
 
         submitButton.setOnMousePressed(event  -> buttonAnimation.play());
     }
 
     public void playInputAnimation() { if (inputAnimation != null) inputAnimation.play(); }
+
+    public void playEntranceAnimations() {
+        new SlideInAnimation(timerPill, TIMER_PILL_SLIDE_FROM, 1).play();
+        new OvershootAnimation(wordDisplay, 1.16, 0.96).play();
+        inputAnimation.play();
+        buttonAnimation.play();
+    }
+
     public void initTimer(int totalSeconds) { timerArc.init(totalSeconds); }
 
     public void renderWord(char[] chars, int level) {

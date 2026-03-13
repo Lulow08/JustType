@@ -26,6 +26,7 @@
               AnchorPane.rightAnchor="0">
 
          <HBox
+                 fx:id="timerPill"
                  prefWidth="110" prefHeight="38"
                  alignment="CENTER"
                  styleClass="timer-pill"
