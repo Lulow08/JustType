@@ -67,10 +67,10 @@ public class GameController {
         gameView.whitenChars();
 
         SceneManager sceneManager = SceneManager.getInstance();
-        sceneManager.setLoseData(gameLogic.getCurrentWord(), wrongAnswer);
+        sceneManager.setLoseData(wrongAnswer);
         sceneManager.setLoseWordDisplay(gameView.getWordDisplay());
 
-        sceneManager.setLoseData(gameLogic.getCurrentWord(), wrongAnswer);
+        sceneManager.setLoseData(wrongAnswer);
         try {
             sceneManager.loadScene("lose-view.fxml");
         } catch (IOException exception) {
