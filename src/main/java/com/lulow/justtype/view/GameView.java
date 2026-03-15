@@ -20,6 +20,7 @@ public class GameView {
     private static final String CSS_CHAR_NEUTRAL   = "char-neutral";
     private static final String CSS_CHAR_CORRECT   = "char-correct";
     private static final String CSS_CHAR_WRONG     = "char-wrong";
+    private static final String CSS_CHAR_WHITE     = "char-white";
     private static final String CSS_TIMER_NORMAL   = "timer-label";
     private static final String CSS_TIMER_CRITICAL = "timer-label-critical";
 
@@ -34,7 +35,7 @@ public class GameView {
     private final Label     timerLabel;
     private final StackPane timerPane;
 
-    private Label[] charLabels      = new Label[0];
+    private Label[] charLabels = new Label[0];
 
     private PressAnimation inputAnimation;
     private PressAnimation buttonAnimation;
@@ -68,6 +69,8 @@ public class GameView {
 
         submitButton.setOnMousePressed(event  -> buttonAnimation.play());
     }
+
+    public HBox getWordDisplay() { return wordDisplay; }
 
     public void playInputAnimation() { if (inputAnimation != null) inputAnimation.play(); }
 
@@ -105,6 +108,13 @@ public class GameView {
             } else { colorClass = CSS_CHAR_NEUTRAL; }
 
             setCharColor(charLabels[i], colorClass);
+        }
+    }
+
+    public void whitenChars() {
+        for (Label charLabel : charLabels) {
+            charLabel.getStyleClass().removeAll(CSS_CHAR_NEUTRAL, CSS_CHAR_CORRECT, CSS_CHAR_WRONG);
+            charLabel.getStyleClass().add(CSS_CHAR_WHITE);
         }
     }
 
