@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -16,7 +17,6 @@ public class LoseController {
 
     @FXML private AnchorPane rootPane;
     @FXML private Label      titleLabel;
-    @FXML private Label      wordLabel;
     @FXML private Label      answerLabel;
     @FXML private Label      hintLabel;
 
@@ -24,7 +24,13 @@ public class LoseController {
     public void initialize() {
         SceneManager sceneManager = SceneManager.getInstance();
 
-        wordLabel.setText(sceneManager.getLoseWord());
+        HBox wordDisplay = sceneManager.getLoseWordDisplay();
+        if (wordDisplay != null) {
+            rootPane.getChildren().add(wordDisplay);
+            AnchorPane.setLeftAnchor(wordDisplay, 0.0);
+            AnchorPane.setRightAnchor(wordDisplay, 0.0);
+        }
+
         answerLabel.setText("Your answer: " + sceneManager.getLoseAnswer());
 
         titleLabel.setOpacity(0);
