@@ -20,8 +20,7 @@ public class LevelConfig {
     }
 
     public static int getMaxTimeForLevel(int level) {
-        int levelsPassed = (level - 1) / LEVELS_PER_REDUCTION;
-        int time = INITIAL_TIME - (levelsPassed * TIME_REDUCTION);
-        return Math.max(time, MIN_TIME);
+        int reductions = (level - 1) / LEVELS_PER_REDUCTION;
+        return Math.max(INITIAL_TIME - reductions * TIME_REDUCTION, MIN_TIME);
     }
 }
