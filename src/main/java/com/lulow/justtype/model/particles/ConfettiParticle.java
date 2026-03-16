@@ -31,7 +31,4 @@ public class ConfettiParticle extends ParticleAdapter {
         render.setY(yPos);
         render.setRotate(render.getRotate() + ROTATION_SPEED);
     }
-
-    @Override
-    public boolean isDead() { return false; }
 }

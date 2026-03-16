@@ -80,7 +80,7 @@ public class GameController {
         gameView.whitenChars();
         try {
             LoseController loseController = SceneManager.getInstance().loadScene("lose-view.fxml");
-            loseController.setup(gameLogic.getCurrentWord(), wrongAnswer, gameView.getWordDisplay());
+            loseController.setup(wrongAnswer, gameView.getWordDisplay());
         } catch (IOException e) {
             e.printStackTrace();
         }

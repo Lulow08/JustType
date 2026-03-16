@@ -33,7 +33,6 @@ public class WinView {
 
     private final ConfettiFX         confetti;
     private final Rectangle          flashOverlay;
-    private final BackgroundGradient backgroundGradient;
     private Timeline                 beatTimeline;
 
     public WinView(AnchorPane rootPane, Label titleLabel, Label hintLabel) {
@@ -41,7 +40,7 @@ public class WinView {
         this.titleLabel = titleLabel;
         this.hintLabel  = hintLabel;
 
-        this.backgroundGradient = new BackgroundGradient(rootPane);
+        BackgroundGradient backgroundGradient = new BackgroundGradient(rootPane);
         backgroundGradient.updateForLevel(1);
 
         this.confetti = new ConfettiFX(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
