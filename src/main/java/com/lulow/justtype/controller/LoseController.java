@@ -33,7 +33,7 @@ public class LoseController {
         });
     }
 
-    public void setup(String word, String wrongAnswer, HBox wordDisplay) {
+    public void setup(String wrongAnswer, HBox wordDisplay) {
         loseView.setup(wrongAnswer, wordDisplay);
     }
 
