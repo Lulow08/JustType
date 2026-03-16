@@ -29,7 +29,6 @@ public class AshFX extends ParticleEmitterAdapter {
     private final Random random = new Random();
 
     private final List<AshParticle> particles = new ArrayList<>();
-    private final AnimationTimer    loop;
 
     private boolean active             = false;
     private int     particlesPerFrame  = 1;
@@ -40,8 +39,9 @@ public class AshFX extends ParticleEmitterAdapter {
         this.screenWidth  = screenWidth;
         this.screenHeight = screenHeight;
 
-        loop = new AnimationTimer() {
-            @Override public void handle(long now) {
+        AnimationTimer loop = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
                 if (active) spawnBatch();
                 updateParticles();
             }
