@@ -6,6 +6,7 @@ public class LevelConfig {
     public static final int MIN_TIME             = 2;
     private static final int LEVELS_PER_REDUCTION = 5;
     private static final int TIME_REDUCTION       = 2;
+    public static final int WIN_LEVEL            = 45;
 
     private LevelConfig() {}
 
