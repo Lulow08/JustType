@@ -1,0 +1,1 @@
+moduleSearchIndex = [{"l":"com.lulow.justtype"}];updateSearchResults();

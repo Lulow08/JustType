@@ -1,0 +1,10 @@
+module:com.lulow.justtype
+com.lulow.justtype
+com.lulow.justtype.controller
+com.lulow.justtype.model
+com.lulow.justtype.model.particles
+com.lulow.justtype.model.timer
+com.lulow.justtype.model.validator
+com.lulow.justtype.view
+com.lulow.justtype.view.animations
+com.lulow.justtype.view.particles
