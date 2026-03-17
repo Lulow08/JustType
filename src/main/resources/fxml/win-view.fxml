@@ -23,7 +23,6 @@
 
     <Label
             fx:id="statsLabel"
-            text=""
             AnchorPane.topAnchor="192"
             AnchorPane.leftAnchor="0"
             AnchorPane.rightAnchor="0"

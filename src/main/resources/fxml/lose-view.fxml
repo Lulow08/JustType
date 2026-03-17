@@ -23,7 +23,6 @@
 
     <Label
             fx:id="answerLabel"
-            text=""
             AnchorPane.topAnchor="190"
             AnchorPane.leftAnchor="0"
             AnchorPane.rightAnchor="0"
@@ -33,7 +32,6 @@
 
     <Label
             fx:id="statsLabel"
-            text=""
             AnchorPane.topAnchor="212"
             AnchorPane.leftAnchor="0"
             AnchorPane.rightAnchor="0"
